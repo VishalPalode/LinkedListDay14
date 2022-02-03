@@ -86,7 +86,7 @@ namespace LinkedList
             return this.head;
         }
         //Method To delete First Node
-        public int DeleteFirstNode(int data)
+        public int DeleteFirstNode()
         {
             if (this.head == null)
             {
@@ -117,6 +117,21 @@ namespace LinkedList
             int deleteLastNode = newNode.next.data;
             newNode.next = null;
             return deleteLastNode;
+        }
+        //Method to search any given Node
+        public int SearchNode(int value)
+        {
+            Node temp = this.head;
+            while (temp != null)
+            {
+                if (temp.data == value)
+                {
+                    return value;
+                }
+                temp = temp.next;
+            }
+            Console.WriteLine("{0} is not a Linked List Node", value);
+            return 0;
         }
     }
 }
