@@ -34,19 +34,16 @@ namespace LinkedList
         public void DisplayLinkedList()
         {
             Console.WriteLine("Display nodes of Linked List");
-            Node temp = head;
+            Node temp = this.head;
             if (temp == null)
             {
                 Console.WriteLine("Linked list is Empty");
                 return;
             }
-            else
+            while (temp != null)
             {
-                while (temp != null)
-                {
-                    Console.WriteLine("Nodes are : " + temp.data);
-                    temp = temp.next;
-                }
+                Console.WriteLine("Nodes are : " + temp.data);
+                temp = temp.next;
             }
         }
         //Method to Add Node at First in Linked List
@@ -67,16 +64,6 @@ namespace LinkedList
         public Node InsertAtParticularPosition(int position, int data)
         {
             Node newestNode = new Node(data);
-            if (this.head == null)
-            {
-                return newestNode;
-            }
-            if (position == 0)
-            {
-                newestNode.next = this.head;
-                this.head = newestNode;
-                return this.head;
-            }
             //Node Exchange
             Node prev = null;
             Node current = this.head;
@@ -139,6 +126,34 @@ namespace LinkedList
                 count++;
             }
             return count;
+        }
+        //Method to Delete a Node from specific position
+        public void DeleteAtParticularPosition(int position)
+        {
+            Node temp = this.head;
+            for (int i = 0; temp != null && i < position - 1; i++)
+            {
+                temp = temp.next;
+            }
+            Node next = temp.next.next;
+            temp.next = next;
+        }
+        //Method to get size of a Linked List
+        public void Size()
+        {
+            if (this.head == null)
+            {
+                Console.WriteLine("Linked list is Empty");
+                return;
+            }
+            int count = 0;
+            Node temp = this.head;
+            while (temp != null)
+            {
+                temp = temp.next;
+                count++;
+            }
+            Console.WriteLine("Size of Linked List:" + count);
         }
     }
 }
